@@ -21,7 +21,7 @@ public class EmailController {
     @PostMapping("/send")
     public ResponseEntity<String> sendEmail(@RequestBody EmailEntity emailEntity) {
         emailService.SendEmail(emailEntity);
-        return ResponseEntity.ok("✅ Письмо отправлено!");
+        return ResponseEntity.ok("Письмо отправлено");
     }
 }
 
