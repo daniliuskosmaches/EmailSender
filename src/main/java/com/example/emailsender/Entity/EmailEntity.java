@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 
-@Data
+
 public class EmailEntity {
 
     @NotBlank(message = "Имя обязательно")
@@ -23,6 +23,7 @@ public class EmailEntity {
 
     @NotNull
     private LocalDate childBirthday;
+    private String message;
     public  EmailEntity(String name, String phone, LocalDate eventDate, LocalDate childBirthday) {
         this.name = name;
     }
@@ -39,4 +40,11 @@ public class EmailEntity {
     public LocalDate getChildBirthday(){
         return childBirthday;
     }
+
+    public String getMessage() {
+        return message;
+    }
+
+
+
 }
