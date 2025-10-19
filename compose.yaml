@@ -1,2 +1,14 @@
-services:
 
+
+version: "3.9"
+
+services:
+  email-app:
+    build: .
+    container_name: email-sender
+    ports:
+      - "8080:8080"
+    environment:
+      # Если у тебя есть переменные (SMTP и т.д.), можно добавить их позже
+      SPRING_DOCKER_COMPOSE_ENABLED: false
+    restart: always
