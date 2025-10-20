@@ -30,8 +30,8 @@ public class EmailService {
 
         try {
             SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setTo("client@example.com"); // <-- получатель (можно заменить на emailEntity.getEmail())
-            msg.setSubject("Новая заявка от " + emailEntity.getName());
+            msg.setTo("rasul2000r@mail.ru"); // <-- получатель (можно заменить на emailEntity.getEmail())
+            msg.setText("Новая заявка от " + emailEntity.getName());
             msg.setText(emailEntity.toString()); // можно сделать красивее форматированием
 
             mailSender.send(msg);
