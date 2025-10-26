@@ -30,9 +30,23 @@ public class EmailService {
 
         try {
             SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setTo("rasul2000r@mail.ru"); // <-- получатель (можно заменить на emailEntity.getEmail())
+            msg.setTo("EMAIL_TO"); // <-- получатель (можно заменить на emailEntity.getEmail())
             msg.setText("Новая заявка от " + emailEntity.getName());
-            msg.setText(emailEntity.toString()); // можно сделать красивее форматированием
+            String emailText = String.format(
+                    "Новая заявка:\n\n" +
+                            "Имя: %s\n" +
+                            "Телефон: %s\n" +
+                            "Дата мероприятия: %s\n" +
+                            "День рождения ребенка: %s\n" +
+                            "Сообщение: %s",
+                    emailEntity.getName(),
+                    emailEntity.getPhone(),
+                    emailEntity.getEventDate(),
+                    emailEntity.getChildBirthday(),
+                    emailEntity.getMessage() != null ? emailEntity.getMessage() : "Нет"
+            );
+
+
 
             mailSender.send(msg);
             log.info("Письмо успешно отправлено клиенту {}", "client@example.com");

@@ -2,6 +2,7 @@ package com.example.emailsender.Controller;
 
 import com.example.emailsender.Entity.EmailEntity;
 import com.example.emailsender.Service.EmailService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public class EmailController {
     }
 
     @PostMapping("/send-email")
-    public ResponseEntity<String> sendEmail(@RequestBody EmailEntity emailEntity) {
+    public ResponseEntity<String> sendEmail(@Valid @RequestBody EmailEntity emailEntity) {
         emailService.SendEmail(emailEntity);
         return ResponseEntity.ok("Письмо отправлено");
     }

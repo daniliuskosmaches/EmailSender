@@ -1,13 +1,19 @@
 package com.example.emailsender.Entity;
 
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.intellij.lang.annotations.Pattern;
+import lombok.Getter;
+import lombok.Setter;
+import jakarta.validation.constraints.Pattern;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 
-
+@AllArgsConstructor
+@Data
+@Getter
+@Setter
 public class EmailEntity {
 
     @NotBlank(message = "Имя обязательно")
@@ -15,7 +21,7 @@ public class EmailEntity {
     private String name;
 
     @NotBlank(message = "Телефон обязателен")
-    @Pattern("")
+    @Pattern(regexp = "^[0-9]{10,15}$", message = "Неверный формат телефона")
     private String phone;
 
     @jakarta.validation.constraints.NotNull(message = "Дата мероприятия обязательна")
@@ -24,26 +30,7 @@ public class EmailEntity {
     @NotNull
     private LocalDate childBirthday;
     private String message;
-    public  EmailEntity(String name, String phone, LocalDate eventDate, LocalDate childBirthday) {
-        this.name = name;
-    }
-    public String getName(){
-        return name;
-    }
-    public String getPhone(){
-        return phone;
 
-    }
-    public LocalDate getEventDate(){
-        return eventDate;
-    }
-    public LocalDate getChildBirthday(){
-        return childBirthday;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 
 
 
