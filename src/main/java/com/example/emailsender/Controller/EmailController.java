@@ -19,7 +19,7 @@ public class EmailController {
         this.emailService = emailService;
     }
 
-    @PostMapping("/api/booking")
+    @PostMapping("/booking")
     public ResponseEntity<String> sendEmail(@Valid @RequestBody EmailEntity emailEntity) {
         emailService.SendEmail(emailEntity);
         return ResponseEntity.ok("Письмо отправлено, спасибо что выбрали нашу компанию в ближайшее время с вами свяжуться");
