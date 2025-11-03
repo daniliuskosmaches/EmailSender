@@ -1,4 +1,4 @@
-package com.example.emailsender.Entity;
+package com.example.emailsender.DTO;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,10 @@ import java.time.LocalDate;
 @Data
 @Getter
 @Setter
-public class EmailEntity {
+public class EmailDTO {
+    @NotNull
+    private String Packagetype;
+
 
     @NotBlank(message = "Имя обязательно")
     @Size(max = 50, message = "Имя слишком длинное")

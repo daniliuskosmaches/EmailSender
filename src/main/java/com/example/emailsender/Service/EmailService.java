@@ -2,7 +2,7 @@ package com.example.emailsender.Service;
 
 
 
-import com.example.emailsender.Entity.EmailEntity;
+import com.example.emailsender.DTO.EmailDTO;
 import com.example.emailsender.Error.ApplicationException;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,7 +23,7 @@ public class EmailService {
         this.mailSender = mailSender;
     }
 
-    public void SendEmail(EmailEntity emailEntity) {
+    public void SendEmail(EmailDTO emailEntity) {
         if (emailEntity == null) {
             throw new IllegalArgumentException("Заявка не может быть пуста");
         }

@@ -1,6 +1,6 @@
 package com.example.emailsender.Controller;
 
-import com.example.emailsender.Entity.EmailEntity;
+import com.example.emailsender.DTO.EmailDTO;
 import com.example.emailsender.Service.EmailService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class EmailController {
     }
 
     @PostMapping("/booking")
-    public ResponseEntity<String> sendEmail(@Valid @RequestBody EmailEntity emailEntity) {
+    public ResponseEntity<String> sendEmail(@Valid @RequestBody EmailDTO emailEntity) {
         emailService.SendEmail(emailEntity);
         return ResponseEntity.ok("Письмо отправлено, спасибо что выбрали нашу компанию в ближайшее время с вами свяжуться");
     }
