@@ -16,8 +16,7 @@ import java.time.LocalDate;
 @Setter
 public class EmailDTO {
     @NotNull
-    private String Packagetype;
-
+    private String PackageType;
 
     @NotBlank(message = "Имя обязательно")
     @Size(max = 50, message = "Имя слишком длинное")

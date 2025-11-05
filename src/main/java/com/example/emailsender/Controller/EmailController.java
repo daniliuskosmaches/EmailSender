@@ -21,7 +21,7 @@ public class EmailController {
 
     @PostMapping("/booking")
     public ResponseEntity<String> sendEmail(@Valid @RequestBody EmailDTO emailEntity) {
-        emailService.SendEmail(emailEntity);
+
         return ResponseEntity.ok("Письмо отправлено, спасибо что выбрали нашу компанию в ближайшее время с вами свяжуться");
     }
 }
