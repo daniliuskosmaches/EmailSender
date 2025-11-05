@@ -8,6 +8,7 @@ import lombok.Setter;
 import jakarta.validation.constraints.Pattern;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -17,6 +18,8 @@ import java.time.LocalDate;
 public class EmailDTO {
     @NotNull
     private String PackageType;
+    @NotNull
+    private BigDecimal incomingPrice;
 
     @NotBlank(message = "Имя обязательно")
     @Size(max = 50, message = "Имя слишком длинное")
