@@ -1,26 +1,27 @@
 package com.example.emailsender.Service.Validator;
 import com.example.emailsender.Error.PriceValidationException;
 import com.example.emailsender.Service.Validator.PackagesPriceValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
+@Service
 public class PriceValidationService {
+
     private final Map<String, PackagesPriceValidator> validators;
+
 
     // Spring автоматически находит все классы, реализующие PackagePriceValidator, и передает их сюда
     public PriceValidationService(List<PackagesPriceValidator> validatorList) {
-        this.validators = validatorList.stream()
-                // Создаем Map: ключ - результат .getType(), значение - сам объект-валидатор
-                .collect(Collectors.toMap(
-                        v -> v.getType().toLowerCase(),
-                        Function.identity()
-                ));
+     this.validators = validatorList.stream().collect(Collectors.toMap(PackagesPriceValidator::getType, Function.identity()));
     }
-    public static void validatePackagePrice(String packageType, BigDecimal price) {
+
+
+    public void validatePackagePrice(String packageType, BigDecimal price) {
 
         // 1. Находим нужный валидатор по типу пакета
         PackagesPriceValidator validator = validators.get(packageType.toLowerCase());

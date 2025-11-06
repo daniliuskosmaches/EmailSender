@@ -3,7 +3,7 @@ package com.example.emailsender.Service.Validator;
 import java.math.BigDecimal;
 
 public class StandartPackageValidator implements PackagesPriceValidator{
-private final BigDecimal incomingPrice = new BigDecimal("35000");
+private static final BigDecimal incomingPrice = new BigDecimal("35000");
     @Override
     public String getType() {
         return "Стандарт";
@@ -12,7 +12,7 @@ private final BigDecimal incomingPrice = new BigDecimal("35000");
     @Override
     public boolean isValid(String price) {
 
-        return new BigDecimal(price).compareTo(new BigDecimal("35000")) >= 0;
+        return new BigDecimal(price).compareTo(incomingPrice) >= 0;
     }
 
     @Override

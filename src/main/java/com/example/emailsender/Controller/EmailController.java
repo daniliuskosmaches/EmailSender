@@ -4,6 +4,7 @@ import com.example.emailsender.DTO.EmailDTO;
 import com.example.emailsender.Service.EmailService;
 import com.example.emailsender.Service.Validator.PriceValidationService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,17 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/booking")
+
 public class EmailController {
 
     private final EmailService emailService;
 
     public EmailController(EmailService emailService) {
         this.emailService = emailService;
+
     }
 
     @PostMapping("/booking")
+
     public ResponseEntity<String> sendEmail(@Valid @RequestBody EmailDTO emailEntity) {
-        PriceValidationService.validatePackagePrice(emailEntity.getPackageType(), emailEntity.getIncomingPrice());
+
+
 
         return ResponseEntity.ok("Письмо отправлено, спасибо что выбрали нашу компанию в ближайшее время с вами свяжуться");
     }
